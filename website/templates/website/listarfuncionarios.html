@@ -1,0 +1,35 @@
+{% extends 'website/index.html' %}
+{% block title %}Lista de Funcionários{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Lista de Funcionários</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>CPF</th>
+                <th>Tempo de Serviço (anos)</th>
+                <th>Remuneração (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{ funcionario.nome }}</td>
+                <td>{{ funcionario.sobrenome }}</td>
+                <td>{{ funcionario.cpf }}</td>
+                <td>{{ funcionario.tempo_de_servico }}</td>
+                <td>{{ funcionario.remuneracao }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">Nenhum funcionário encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
