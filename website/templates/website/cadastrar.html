@@ -1,13 +1,14 @@
 {% extends 'website/base.html' %}
 
+{% block title %}Cadastrar Funcionário{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-  <h2>Cadastrar Funcionário</h2>
-  <form method="POST">
+<h1 class="mb-4">Cadastrar Funcionário</h1>
+
+<form method="POST" class="shadow p-4 bg-white rounded">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-success">Salvar</button>
     <a href="{% url 'website:listar' %}" class="btn btn-secondary">Cancelar</a>
-  </form>
-</div>
+</form>
 {% endblock %}

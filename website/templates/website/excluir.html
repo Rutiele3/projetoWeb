@@ -1,14 +1,17 @@
 {% extends 'website/base.html' %}
 
-{% block content %}
-<div class="container mt-5">
-    <h2>Excluir Funcionário</h2>
-    <p>Tem certeza que deseja excluir <strong>{{ funcionario.nome }}</strong>?</p>
+{% block title %}Excluir Funcionário{% endblock %}
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Sim, excluir</button>
-        <a href="{% url 'website:listar' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
+{% block content %}
+<h1 class="mb-4 text-danger">Excluir Funcionário</h1>
+
+<div class="alert alert-warning">
+    Tem certeza que deseja excluir <strong>{{ funcionario.nome }} {{ funcionario.sobrenome }}</strong>?
 </div>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+    <a href="{% url 'website:listar' %}" class="btn btn-secondary">Cancelar</a>
+</form>
 {% endblock %}

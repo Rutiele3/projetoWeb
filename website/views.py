@@ -1,5 +1,5 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
-import funcionarios
 from funcionarios.models import Funcionarios
 from website.forms import FuncionarioForm
 # Create your views here.
@@ -11,13 +11,16 @@ def index(request):
 def lista_funcionarios(request):
     funcionarios = Funcionarios.objects.all()
     contexto = {
-        'funcionarios': funcionarios
+        'funcionarios': funcionarios,
+        "autor": settings.AUTOR_SISTEMA
     }
     return render(request, 'website/funcionarios.html', contexto)
 
 def detalhes_funcionario(request, id):
     funcionarios = get_object_or_404(Funcionarios, pk=id)
-    contexto = {"funcionario": funcionarios}
+    contexto = {
+        "funcionario": funcionarios,
+        "autor": settings.AUTOR_SISTEMA}
     return render(request, 'website/detalhesFuncionario.html', contexto)
 
 def cadastrar_funcionario(request):
@@ -49,5 +52,8 @@ def excluir_funcionario(request, id):
     if request.method == "POST":
         funcionario.delete()
         return redirect('website:listar')  
-    contexto = {"funcionario": funcionario}
+    contexto = {
+        "funcionario": funcionario,
+        "autor": settings.AUTOR_SISTEMA
+        }
     return render(request, 'website/excluir.html', contexto)
