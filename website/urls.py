@@ -1,7 +1,14 @@
 from django.urls import path
 from . import views
 
+app_name = 'website'
 urlpatterns = [
-    path('', views.index, name='home'), 
-    path('listarfuncionarios', views.lista_funcionarios, name='listar_funcionarios'), 
+    path('', views.index, name='index'),
+    path('funcionarios/', views.lista_funcionarios, name='listar'),
+    path('funcionarios/<int:id>/', views.detalhes_funcionario, name='detalhes'),
+    path('editar/<int:id>/', views.editar_funcionario, name='editar'),
+    path('excluir/<int:id>/', views.excluir_funcionario, name='excluir'),
+    path('cadastrar/', views.cadastrar_funcionario, name='cadastrar')
+
+
 ]

@@ -27,13 +27,15 @@ class Funcionarios(models.Model):
         blank=False
     )
 
-    remuneracao = models.FloatField(
+    remuneracao = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
         null=False,
         blank=False
     )
 
     def __str__(self):
-        return f"{self.nome} {self.sobrenome}"
+         return self.nome+" "+self.sobrenome
     
     
 

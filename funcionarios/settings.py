@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'funcionarios',
     'website',
-    'bootstrap5',
+    'django_bootstrap5',
 
 ]
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'funcionarios.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'base/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
